@@ -1,3 +1,5 @@
+#The Family App
+
 The Family App acts as a medium for families to interact with each other better.
 
 The features of the family app are mentioned below:
