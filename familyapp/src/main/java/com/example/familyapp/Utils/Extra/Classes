@@ -1,0 +1,50 @@
+person
+    name
+    age
+    sex
+    isAlive
+    IsAvailableForMarriage
+    maritalStatus
+    activitiesCreated
+    activitiesParticipated
+
+Group
+    name
+    description
+    isFamily
+    members
+
+Checklist
+    name
+    isOpen
+    createdBy
+    groupId
+    isPersonal
+
+Item
+    name
+    quantity
+    metric
+    remark
+
+Activity
+    name
+    description
+    date
+    type(event, task)
+    category(shopping/ trek/ anniversary/ party)
+    createdBy
+    participants
+
+Matches
+    person1
+    person2
+    proposedBy
+    remark
+    status(accept, reject)
+
+notification
+    personId
+    type(task/event/birthday/anniversary)
+
+
