@@ -1,0 +1,111 @@
+<body>
+  <mat-toolbar color="primary">
+    <span align="center">The Family App</span>
+  </mat-toolbar>
+  <br>
+
+  <mat-card style="width: 60%; margin-left: 20%;">
+    <mat-card-header>
+      <mat-card-title align="center">Welcome</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <mat-tab-group mat-align-tabs="center" color="accent" backgroundColor = "primary" (selectedTabChange)="resetPerson()">
+          <mat-tab label="Sign In" >
+            <form #Form1="ngForm" class="form">
+              <table class = "single">
+                <br>
+                <tr>
+                  <mat-form-field appearance="outline" class="single">
+                    <mat-label>username</mat-label>
+                    <input #username="ngModel" [(ngModel)]="person.username" required matInput name="username"
+                           [class.is-invalid]="username.invalid && username.touched"  placeholder="Enter username" type="text">
+                    <mat-error *ngIf="username.errors && (username.invalid  || username.touched)">Enter username</mat-error>
+                  </mat-form-field>
+                </tr>
+                <tr>
+                  <mat-form-field appearance="outline" class="single">
+                    <mat-label>Password</mat-label>
+                    <input #password="ngModel" [(ngModel)]="person.password" required matInput name="password"
+                           [class.is-invalid]="password.invalid && password.touched" placeholder="Enter password" type="password">
+                    <mat-error *ngIf="password.errors && (password.invalid  || password.touched)">Enter password</mat-error>
+                  </mat-form-field>
+                </tr>
+                <tr style="text-align: center">
+                  <button #submitButton [disabled]="Form1.invalid || person.username == null || person.password == null"
+                    mat-raised-button color="primary" (click)="submit()">Submit</button>
+                </tr>
+              </table>
+            </form>
+          </mat-tab>
+          <mat-tab label="Sign up">
+
+            <form #Form2="ngForm" class="form">
+              <table class = "signUp">
+              <br>
+              <tr>
+                <mat-form-field appearance="outline" class = "long">
+                  <mat-label>Full name</mat-label>
+                  <input #name="ngModel" [(ngModel)]="person.name" required matInput name="name"
+                         [class.is-invalid]="name.invalid && name.touched" placeholder="Enter full name" type="text">
+                  <mat-error *ngIf="name.errors && (name.invalid  || name.touched)">Enter name</mat-error>
+                </mat-form-field>
+              </tr>
+              <tr class="long">
+                <mat-form-field appearance="outline" class="double">
+                  <mat-label>username</mat-label>
+                  <input #username="ngModel" [(ngModel)]="person.username" required matInput name="username"
+                         [class.is-invalid]="username.invalid && username.touched"  placeholder="Enter username" type="text">
+                  <mat-error *ngIf="username.errors && (username.invalid  || username.touched)">Enter username</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="double">
+                  <mat-label>Password</mat-label>
+                  <input #password="ngModel" [(ngModel)]="person.password" required matInput name="password"
+                         [class.is-invalid]="password.invalid && password.touched" placeholder="Enter password" type="password">
+                  <mat-error *ngIf="password.errors && (password.invalid  || password.touched)">Enter password</mat-error>
+                </mat-form-field>
+              </tr>
+
+              <tr class="long">
+                <mat-form-field appearance="outline" class="double">
+                  <mat-label>Contact Number</mat-label>
+                  <input #contactNo="ngModel" [(ngModel)]="person.contactNo"
+                         [class.is-invalid]="contactNo.invalid && contactNo.touched" matInput maxlength="10"
+                         minlength="10" name="contactNo" pattern="[0-9]+" placeholder="Enter contact number." required
+                         type="text">
+                  <mat-error
+                    *ngIf="contactNo.errors && (contactNo.invalid || contactNo.touched) && contactNo.errors.required">
+                    Enter contact number.
+                  </mat-error>
+                  <mat-error
+                    *ngIf="contactNo.errors && (contactNo.invalid || contactNo.touched) && (contactNo.errors.minlength ||contactNo.errors.pattern)">
+                    Does not contain 10 digits
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="double">
+                  <mat-label>Email</mat-label>
+                  <input #email="ngModel" [(ngModel)]="person.email"
+                         [class.is-invalid]="email.invalid && email.touched" matInput required name="email"
+                         pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Enter email" type="email">
+                  <mat-error *ngIf="email.errors && (email.invalid || email.touched) && email.errors.required">Enter
+                    email
+                  </mat-error>
+                  <mat-error *ngIf="email.errors && (email.invalid || email.touched) && email.errors.pattern">Enter valid
+                    email
+                  </mat-error>
+                </mat-form-field>
+              </tr>
+
+              <tr style="text-align: center">
+                <button #submitButton [disabled]="Form2.invalid" mat-raised-button color="primary" (click)="submit()">Submit</button>
+  <!--              || person.email == null || person.contactNo == null || person.name == null || person.username == null || person.password == null"-->
+              </tr>
+            </table>
+            </form>
+          </mat-tab>
+
+        </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</body>

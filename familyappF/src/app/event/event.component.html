@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{event.name}}</mat-card-title>
+    <mat-card-subtitle>
+      <div>
+        <div>{{event.description}}</div>
+        <div>Created By : {{event.createdBy.name}}</div>
+        <div>Event Date : {{event.date}} </div>
+      </div>
+      <button mat-raised-button (click)="updateExpandableElement('Participants')">Participants</button>
+    </mat-card-subtitle>
+    
+  </mat-card-header>
+  <mat-card-content>
+    
+    <div *ngIf="expandableElement == 'Participants'">
+      <mat-list>
+        <mat-list-item *ngFor="let participant of event.participants"> {{participant.name}} -- {{participant.contactNo}} </mat-list-item>
+       </mat-list>
+    </div>
+  
+  </mat-card-content>
+  <!-- <mat-card-actions>
+    <button mat-raised-button (click)="addItem()">+</button>
+  </mat-card-actions> -->
+</mat-card>

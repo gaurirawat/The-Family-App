@@ -1,0 +1,8 @@
+<div style="margin-top: 10px;float: right;">
+  <button mat-raised-button (click)="addTask()">New Task</button>
+</div>
+<br>
+<br>
+<div class="task" *ngFor="let task of tasks">
+  <app-task [data]="task"></app-task>
+</div>

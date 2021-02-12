@@ -1,0 +1,9 @@
+<div style="margin-top: 10px;float: right;">
+  <button mat-raised-button (click)="addCheckList()">New Checklist</button>
+</div>
+<br>
+<div *ngFor="let checkList of checkLists">
+  <br>
+  <br>
+    <app-check-list [data]="checkList"></app-check-list>
+</div>

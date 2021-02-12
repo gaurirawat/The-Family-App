@@ -1,0 +1,17 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{checkList.name}}</mat-card-title>
+    <mat-card-subtitle>{{checkList.personal ? "Personal" : checkList.family.name}}</mat-card-subtitle>
+    <!-- <mat-card-subtitle>{{checkList.personal}}</mat-card-subtitle> -->
+  </mat-card-header>
+  <mat-card-content>
+    <mat-selection-list (selectionChange) = "selectionChanged($event)">
+      <mat-list-option *ngFor="let item of checkList.items" [selected] = "!item.active" [value] = "item" >
+        {{item.description}}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="addItem()">+</button>
+  </mat-card-actions>
+</mat-card>

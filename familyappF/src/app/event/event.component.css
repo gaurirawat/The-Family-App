@@ -1,0 +1,12 @@
+.mat-card-title {
+  margin-top: 12px;
+}
+
+.mat-card-header {
+  background: #ffd740;
+}
+
+.mat-list-item {
+  background: rgb(247, 247, 136);
+  margin-bottom: 10px;
+}

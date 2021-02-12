@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-header>
+    <div class="right-title">
+      <button mat-raised-button (click)="updateExpandableElement('Members')">Members</button>
+      <button mat-raised-button (click)="updateExpandableElement('Checklists')" style="margin-left: 8px;">Checklists</button>
+    </div>
+      <mat-card-title>{{family.name}} : {{family.size}} members</mat-card-title>
+    <mat-card-subtitle>
+      {{family.description}}
+      
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+    <div *ngIf="expandableElement == 'Members'">
+      <app-member-list [familyId]="family.id" ></app-member-list>
+    </div>
+
+    <div *ngIf="expandableElement == 'Checklists'">
+      <app-family-check-lists [familyId]="family.id" ></app-family-check-lists>
+    </div>
+
+  </mat-card-content>
+</mat-card>

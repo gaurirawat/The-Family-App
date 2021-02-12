@@ -1,0 +1,85 @@
+<mat-toolbar color="primary">
+  <img mat-card-avatar src="assets/blackhouse.jpg"/>
+  <span style="margin-left:3px ;">The Family App</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button [matMenuTriggerFor]="accountPanel">
+    <img mat-card-avatar style="height: 35px;width: 35px;" src="assets/download.jpeg"/>
+  </button>
+  <button mat-icon-button [matMenuTriggerFor]="notificationPanel" (menuClosed) = "notificationRead()">
+    <mat-icon *ngIf="user.newNotifications != 0" [matBadge]="user.newNotifications" matBadgeColor="warn" >message</mat-icon>
+    <mat-icon *ngIf="user.newNotifications == 0" >message</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon home-icon" (click)="redirectHome()">
+    <mat-icon>home</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-menu #notificationPanel="matMenu" >
+  <div *ngFor="let notification of notifications" mat-menu-item [style] = "!notification.notificationRead ? 'background:rgb(228, 228, 228)':''">
+    <span>
+      {{notification.message}}
+    </span>
+    <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
+  </div>
+</mat-menu>
+
+<mat-menu #accountPanel="matMenu" >
+  <div mat-menu-item>{{user.username}}</div>
+  <div mat-menu-item>{{user.name}}</div>
+  <div mat-menu-item>{{user.email}}</div>
+  <div mat-menu-item>{{user.contactNo}}</div>
+</mat-menu>
+
+<mat-drawer-container class="example-container">
+
+  <mat-drawer mode="side" opened>
+    <div class="mat-drawer-inner-container ">
+
+      <button class=" sidenav" mat-button (click)="selectionChange('MyFamilies');">
+        <mat-icon>cottage</mat-icon>
+        <span>    My families</span>
+      </button>
+      <mat-divider></mat-divider>
+
+      <button class=" sidenav" mat-button (click)="selectionChange('Events')">
+        <mat-icon>event</mat-icon>
+        <span>    Events</span>
+      </button>
+      <mat-divider></mat-divider>
+
+      <button class=" sidenav" mat-button (click)="selectionChange('Tasks')">
+        <mat-icon>list</mat-icon>
+        <span>    Tasks</span>
+      </button>
+      <mat-divider></mat-divider>
+
+      <button class=" sidenav" mat-button (click)="selectionChange('Checklist')">
+        <mat-icon>fact_check</mat-icon>
+        <span>    Checklist</span>
+      </button>
+      <mat-divider></mat-divider>
+
+      <button class=" sidenav" mat-button (click)="selectionChange('Matrimony')">
+        <mat-icon>local_florist</mat-icon>
+        <span>    Matrimony</span>
+      </button>
+      <mat-divider></mat-divider>
+     </div>
+
+  </mat-drawer>
+  <mat-drawer-content>
+    <div *ngIf="selection == 'Checklist'" class = "feed">
+      <app-check-lists></app-check-lists>
+    </div>
+    <div *ngIf="selection == 'MyFamilies'" class = "feed">
+      <app-families></app-families>
+    </div>
+    <div *ngIf="selection == 'Tasks'" class = "feed">
+      <app-tasks></app-tasks>
+    </div>
+    <div *ngIf="selection == 'Events'" class = "feed">
+      <app-events></app-events>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
